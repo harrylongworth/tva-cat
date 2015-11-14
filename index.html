@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>OATSEA Teacher Virus Payloads Online Catalog</title>
+
+   	<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<H1>OATSEA Catalog</H1>
+	<div class="row">
+	  <div class="col-sm-4 col-md-4 col-sm-offset-8" id="searchthing">
+	  	<input class="form-control input-lg" placeholder="Filter" ng-model="searchKey" />
+	  </div>
+	</div>
+
+	<p><hr></p>
+	<div class="row" ng-controller="myCtrl">
+	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
+		<p><b>{{item.product_sku}}</b> [ <a href="{{item.product_url}}">Download</a> ]
+		</p>
+		
+	  </div>
+	</div>
+
+	<script src="angular.js"></script>
+
+   	<script>
+   		angular.module('myapp',[])
+   			.controller('myCtrl',MyCtrl);
+
+   		function MyCtrl($scope, $http) {
+   			$http({method: 'GET', url: 'http://teachervirus.org/index.php?option=com_jsonexport&table=jos_virtuemart_products'}).success(function(data) {
+   				$scope.catalog=data; // response data 
+   			});
+   		}	// end MyCtrl
+
+   	</script>
+
+</body>
+</html>
