@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-	<H1>OATSEA Catalog</H1>
+	<H1>OATSEA TV Payloads Catalog</H1>
 	<div class="row">
 	  <div class="col-sm-4 col-md-4 col-sm-offset-8" id="searchthing">
 	  	<input class="form-control input-lg" placeholder="Filter" ng-model="searchKey" />
@@ -18,7 +18,7 @@
 	<div class="row" ng-controller="myCtrl">
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
 	  	<h2>{{item.product_name}}</h2>
-		<p><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Download</a>]	
+		<p><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Install</a>]	
 		<p>{{item.product_s_desc}}</p>
 		<p>{{item.product_desc}}</p>
 		
