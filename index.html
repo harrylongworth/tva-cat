@@ -17,7 +17,10 @@
 	<p><hr></p>
 	<div class="row" ng-controller="myCtrl">
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
-		<p><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Download</a>]</p>
+	  	<h2>{{item.product_name}}</h2>
+		<p><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Download</a>]	
+		<p>{{item.product_s_desc}}</p>
+		<p>{{item.product_desc}}</p>
 		
 	  </div>
 	</div>
@@ -29,7 +32,7 @@
    			.controller('myCtrl',MyCtrl);
 
    		function MyCtrl($scope, $http) {
-   			$http({method: 'GET', url: 'http://teachervirus.org/index.php?option=com_jsonexport&table=jos_virtuemart_products'}).success(function(data) {
+   			$http({method: 'GET', url: 'http://teachervirus.org/index.php?option=com_jsonexport&table=catalog'}).success(function(data) {
    				$scope.catalog=data; // response data 
    			});
    		}	// end MyCtrl
