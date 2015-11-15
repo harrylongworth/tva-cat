@@ -15,7 +15,7 @@
 	</div>
 
 	<p><hr></p>
-	<div class="row" ng-controller="myCtrl">
+	<div class="row" ng-controller="myCtrl" ng-cloak>
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
 	  	<h2>{{item.product_name}}</h2>
 		<p><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Install</a>]	
