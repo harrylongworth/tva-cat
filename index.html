@@ -4,6 +4,8 @@
 	<title>OATSEA Teacher Virus Payloads Online Catalog</title>
 
    	<link href="css/bootstrap.css" rel="stylesheet">
+   	<link href="css/my-styles.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
@@ -15,7 +17,7 @@
 	</div>
 
 	<p><hr></p>
-	<div class="row" ng-controller="myCtrl" ng-cloak>
+	<div class="row ng-cloak" ng-controller="myCtrl" ng-cloak>
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
 	  	<h2 ng-cloak>{{item.product_name}}</h2>
 		<p ng-cloak><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Install</a>]	
