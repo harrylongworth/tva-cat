@@ -17,10 +17,10 @@
 	<p><hr></p>
 	<div class="row" ng-controller="myCtrl" ng-cloak>
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
-	  	<h2>{{item.product_name}}</h2>
-		<p><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Install</a>]	
-		<p>{{item.product_s_desc}}</p>
-		<p>{{item.product_desc}}</p>
+	  	<h2 ng-cloak>{{item.product_name}}</h2>
+		<p ng-cloak><b>{{item.product_sku}}</b> [<a href="{{item.product_url}}">Install</a>]	
+		<p ng-cloak>{{item.product_s_desc}}</p>
+		<p ng-cloak>{{item.product_desc}}</p>
 		
 	  </div>
 	</div>
