@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<H1>OATSEA TV Payloads Catalog</H1>
+	<H1>OATSEA Catalog</H1>
 	<div class="row">
 	  <div class="col-sm-4 col-md-4 col-sm-offset-8" id="searchthing">
 	  	<input class="form-control input-lg" placeholder="Filter" ng-model="searchKey" />
@@ -19,11 +19,13 @@
 	<p><hr></p>
 	<div class="row ng-cloak" ng-controller="myCtrl" ng-cloak>
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
-	  	<h2 ng-cloak>{{item.product_name}}</h2>
-		<p ng-cloak><b>{{item.product_sku}}</b> 	
-		<p ng-cloak>{{item.product_s_desc}}</p>
-		<p ng-cloak>{{item.product_desc}}</p>
-		<a class="btn btn-lg btn-primary" href="{{item.product_url}}" roll="button">Install</a>
+	  	<h2 ng-cloak>{{item.name}}</h2>
+		<p ng-cloak><b>{{item.TVID}}</b> 	
+		<p ng-cloak><i>{{item.blurb}}</i></p>
+		<p ng-cloak><b>By:</b> <a href="{{item.contrib_url}}">{{item.contributor}}</a> </p>
+		<p ng-cloak><b>Rating:</b> {{item.rating}}/5 &#9734; ( {{item.votes}} ) </p>
+		<p ng-cloak>{{item.description}}</p>
+		<a class="btn btn-lg btn-primary" href="{{item.downloadurl}}" roll="button">Install</a>
 		
 	  </div>
 	</div>
