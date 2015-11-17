@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<H1>OATSEA Catalog</H1>
+	<H1>OATSEA Teacher Virus Catalog</H1>
 	<div class="row">
 	  <div class="col-sm-4 col-md-4 col-sm-offset-8" id="searchthing">
 	  	<input class="form-control input-lg" placeholder="Filter" ng-model="searchKey" />
@@ -18,28 +18,33 @@
 
 	<p><hr></p>
 	<div class="row ng-cloak" ng-controller="myCtrl" ng-cloak>
-	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey">
+	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey | orderObjectBy:criteria:direction">
 	  	<h2 ng-cloak>{{item.name}}</h2>
 		<p ng-cloak><b>{{item.TVID}}</b> 	
 		<p ng-cloak><i>{{item.blurb}}</i></p>
 		<p ng-cloak><b>By:</b> <a href="{{item.contrib_url}}">{{item.contributor}}</a> </p>
-		<p ng-cloak><b>Rating:</b> {{item.rating}}/5 &#9734; ( {{item.votes}} ) </p>
-		<p ng-cloak>{{item.description}}</p>
+		<p ng-cloak><b>Rating:</b> {{item.rating}} out of 5 ( {{item.votes}} ) </p>
+		<p ng-cloak ng-bind-html="item.description | limitTo:300"></p>
 		<a class="btn btn-lg btn-primary" href="{{item.downloadurl}}" roll="button">Install</a>
 		
 	  </div>
 	</div>
 
 	<script src="angular.js"></script>
+	<script src="angular-sanitize.js"></script>
+	<script src="ng-order-object-by.js"></script>
 
    	<script>
-   		angular.module('myapp',[])
+   		angular.module('myapp',['ngSanitize','ngOrderObjectBy'])
    			.controller('myCtrl',MyCtrl);
 
    		function MyCtrl($scope, $http) {
    			$http({method: 'GET', url: 'http://teachervirus.org/index.php?option=com_jsonexport&table=catalog'}).success(function(data) {
    				$scope.catalog=data; // response data 
    			});
+   			// $scope.criteria = 'TVID';
+   			$scope.criteria = 'rating';
+   			$scope.direction  = true;
    		}	// end MyCtrl
 
    	</script>
