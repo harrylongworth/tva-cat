@@ -7,10 +7,11 @@
    	<link href="css/my-styles.css" rel="stylesheet">
 
 </head>
-<body>
-<div class="container">
-	<H1>OATSEA Teacher Virus Catalog</H1>
-	<div class="row">
+<body style="background-color:#F8F8FF;padding:5px">
+<div class="container" style="bgcolor:#ccc">
+	<H1 class="text-center">OATSEA Teacher Virus Catalog</H1>
+	<div class="container">
+	 <div class="row">
 	  <div class="col-sm-4 col-md-4" id="searchthing">
 	  	<input class="form-control input-lg" placeholder="Search" ng-model="searchKey" />
 	  </div>
@@ -20,23 +21,28 @@
 	  <div class="col-sm-4 col-md-4" id="searchthing3">
 	  	<input class="form-control input-lg" placeholder="Contributor" ng-model="searchByContributor" />
 	  </div>
+	 </div>
 	</div>
-
 	<p><hr></p>
+	<div class="container">
 	<div class="row ng-cloak" ng-controller="myCtrl" ng-cloak>
 	  <div class="col-sm-4 col-md-4" ng-repeat="item in catalog | filter:searchKey | filter:{ type: searchByType } | filter:{ contributor: searchByContributor }  | orderObjectBy:criteria:direction">
-	  	<h2 ng-cloak>{{item.name}}</h2>
-		<p ng-cloak><b>{{item.TVID}}</b> 	
-		<p ng-cloak><i>{{item.blurb}}</i></p>
-		<p ng-cloak><b>By:</b> <a href="{{item.contrib_url}}">{{item.contributor}}</a> </p>
-		<p ng-cloak><b>Rating:</b> {{(item.rating) || "0"}} out of 5 ( {{(item.votes) || "0"}} ) </p>
-		<p ng-cloak>Type: <b>{{item.type}}</b></p>
-		<p ng-cloak ng-bind-html="item.description | limitTo:300"></p>
-		<a class="btn btn-lg btn-primary" href="{{item.downloadurl}}" roll="button">Install</a>
-		
+	  	<div class="thumbnail">
+	  	  <img src="{{(item.icon_url) || 'icon.png'}}" >
+	  	  <div class="caption">
+	  		<h3 ng-cloak>{{item.name}}</h3>
+			<p ng-cloak><b>{{item.TVID}}</b> 	
+			<p ng-cloak><i>{{item.blurb}}</i></p>
+			<p ng-cloak><b>By:</b> <a href="{{item.contrib_url}}">{{item.contributor}}</a> </p>
+			<p ng-cloak><b>Rating:</b> {{(item.rating) || "0"}} out of 5 ( {{(item.votes) || "0"}} ) </p>
+			<p ng-cloak>Type: <b>{{item.type}}</b></p>
+			<p ng-cloak ng-bind-html="item.description | limitTo:300"></p>
+			<a class="btn btn-lg btn-primary" href="{{item.downloadurl}}" roll="button">Install</a>
+		  </div>
+		</div>
 	  </div>
 	</div>
-
+	</div>
 	<script src="angular.js"></script>
 	<script src="angular-sanitize.js"></script>
 	<script src="ng-order-object-by.js"></script>
